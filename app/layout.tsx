@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: absoluteUrl('/images/dentist-hero.png'),
+        url: absoluteUrl('/images/dentist-hero.webp'),
         width: 1200,
         height: 630,
         alt: `${siteName} - Dentista em Campo Mourão`,
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${siteName} | Dentista em Campo Mourão`,
     description: 'Odontologia preventiva e tratamentos modernos em Campo Mourão. Agende sua consulta pelo WhatsApp.',
-    images: [absoluteUrl('/images/dentist-hero.png')],
+    images: [absoluteUrl('/images/dentist-hero.webp')],
   },
 }
 

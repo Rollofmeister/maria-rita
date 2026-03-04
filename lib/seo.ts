@@ -17,7 +17,7 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: "Dra. Maria Rita Gasparello",
-  image: absoluteUrl("/images/dentist-hero.png"),
+  image: absoluteUrl("/images/dentist-hero.webp"),
   url: siteUrl,
   telephone: "+55 44 99834-6194",
   address: {

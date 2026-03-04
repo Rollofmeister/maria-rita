@@ -42,7 +42,7 @@ export async function generateMetadata({
       publishedTime: post.date,
       images: [
         {
-          url: absoluteUrl("/images/dentist-hero.png"),
+          url: absoluteUrl("/images/dentist-hero.webp"),
           width: 1200,
           height: 630,
           alt: post.title,
@@ -110,7 +110,7 @@ export default async function BlogPostPage({
         url: absoluteUrl("/icon.svg"),
       },
     },
-    image: [absoluteUrl("/images/dentist-hero.png")],
+    image: [absoluteUrl("/images/dentist-hero.webp")],
     articleSection: post.category,
   }
 

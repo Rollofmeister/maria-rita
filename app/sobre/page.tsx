@@ -26,7 +26,7 @@ export default function SobrePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/dentist-about.png"
+                  src="/images/dentist-about.webp"
                   alt="Dra. Maria Rita Gasparello em seu consultório"
                   fill
                   className="object-cover"

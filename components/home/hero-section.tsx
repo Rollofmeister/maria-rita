@@ -56,7 +56,7 @@ export function HeroSection() {
           <div className="relative animate-fade-in-up animation-delay-200">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/dentist-hero.png"
+                src="/images/dentist-hero.webp"
                 alt="Dra. Maria Rita Gasparello - Dentista em Campo Mourão"
                 fill
                 className="object-cover"
