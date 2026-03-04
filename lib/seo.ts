@@ -1,0 +1,55 @@
+import { faqs } from "@/lib/faq-data"
+
+const fallbackSiteUrl = "http://localhost:3000"
+
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL || fallbackSiteUrl
+).replace(/\/$/, "")
+
+export const siteName = "Dra. Maria Rita Gasparello"
+
+export function absoluteUrl(path = ""): string {
+  if (!path) return siteUrl
+  return `${siteUrl}${path.startsWith("/") ? path : `/${path}`}`
+}
+
+export const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "Dra. Maria Rita Gasparello",
+  image: absoluteUrl("/images/dentist-hero.png"),
+  url: siteUrl,
+  telephone: "+55 44 99834-6194",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Campo Mourao",
+    addressRegion: "PR",
+    addressCountry: "BR",
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Campo Mourao",
+  },
+  sameAs: ["https://instagram.com/dramariagasparello"],
+}
+
+export const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteName,
+  url: siteUrl,
+  inLanguage: "pt-BR",
+}
+
+export const faqPageSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+}
