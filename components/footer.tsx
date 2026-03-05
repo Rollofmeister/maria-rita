@@ -1,9 +1,46 @@
+"use client"
+
 import Link from "next/link"
+import { useEffect, useRef } from "react"
 import { Instagram, Mail, MapPin, Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
 
 export function Footer() {
+  const signatureRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    let isActive = true
+
+    async function loadSignature() {
+      const target = signatureRef.current
+      if (!target) {
+        return
+      }
+
+      const { mountLSSignature } = await import("ls-signature-footer")
+      if (!isActive) {
+        return
+      }
+
+      mountLSSignature(target, {
+        name: "Luiz Siewerdt",
+        role: "Design e desenvolvimento do site",
+        textColor: "rgba(255,255,255,0.80)",
+        mutedColor: "rgba(255,255,255,0.58)",
+        logoBackground: "#0d9488",
+        logoColor: "#ffffff",
+        fontFamily: "Inter, Inter Fallback, system-ui, sans-serif",
+      })
+    }
+
+    loadSignature()
+
+    return () => {
+      isActive = false
+    }
+  }, [])
+
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20">
@@ -119,13 +156,18 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-16 pt-8 border-t border-background/10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-background/50">
-            {'© 2026 Dra. Maria Rita Gasparello. Todos os direitos reservados.'}
-          </p>
-          <p className="text-xs text-background/50">
-            CRO/PR 40.050 — Responsável Técnica: Dra. Maria Rita Gasparello
-          </p>
+        <div className="mt-16 pt-8 border-t border-background/10 flex flex-col gap-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-xs text-background/50">
+              {'© 2026 Dra. Maria Rita Gasparello. Todos os direitos reservados.'}
+            </p>
+            <p className="text-xs text-background/50">
+              CRO/PR 40.050 — Responsável Técnica: Dra. Maria Rita Gasparello
+            </p>
+          </div>
+          <div className="flex justify-center">
+            <div ref={signatureRef} aria-label="Assinatura do projeto" />
+          </div>
         </div>
       </div>
     </footer>
