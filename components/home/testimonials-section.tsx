@@ -1,20 +1,20 @@
-import { Star } from "lucide-react"
+import { ShieldCheck, ClipboardCheck, MessageCircle } from "lucide-react"
 
-const testimonials = [
+const trustPoints = [
   {
-    text: "Excelente atendimento e muita atenção aos detalhes. Recomendo para quem busca um dentista confiável.",
-    author: "Mariana S.",
-    role: "paciente",
+    icon: ShieldCheck,
+    title: "Registro profissional ativo",
+    description: "Atendimento com responsabilidade técnica e CRO/PR 40.050 visível no site.",
   },
   {
-    text: "Sempre tive medo de dentista, mas a Dra. Maria Rita me deixou muito tranquila. O consultório é lindo e acolhedor.",
-    author: "Fernanda L.",
-    role: "paciente",
+    icon: ClipboardCheck,
+    title: "Conduta clínica com clareza",
+    description: "Antes de iniciar, você recebe explicação de etapas, prioridades e próximos passos.",
   },
   {
-    text: "Fiz o clareamento dental e o resultado superou minhas expectativas. Profissionalismo e competência do início ao fim.",
-    author: "Carlos M.",
-    role: "paciente",
+    icon: MessageCircle,
+    title: "Canal direto no WhatsApp",
+    description: "Contato para dúvidas e agendamento com retorno em horário comercial.",
   },
 ]
 
@@ -24,35 +24,23 @@ export function TestimonialsSection() {
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="text-center mb-12 lg:mb-16">
           <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3">
-            Depoimentos
+            Confiança
           </span>
           <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground text-balance">
-            O que nossos pacientes dizem
+            Como cuidamos da sua decisão com segurança
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {testimonials.map((testimonial) => (
+          {trustPoints.map((item) => (
             <div
-              key={testimonial.author}
+              key={item.title}
               className="flex flex-col p-6 lg:p-8 rounded-xl border border-border bg-card"
             >
-              <div className="flex gap-1 mb-4">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-4 w-4 fill-amber-400 text-amber-400"
-                  />
-                ))}
+              <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-primary/10 mb-5">
+                <item.icon className="h-5 w-5 text-primary" />
               </div>
-              <blockquote className="text-sm text-foreground leading-relaxed flex-1">
-                {`"${testimonial.text}"`}
-              </blockquote>
-              <div className="mt-6 pt-4 border-t border-border">
-                <p className="text-sm font-semibold text-foreground">
-                  {testimonial.author}
-                </p>
-                <p className="text-xs text-muted-foreground">{testimonial.role}</p>
-              </div>
+              <h3 className="text-lg font-semibold text-foreground mb-2">{item.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
             </div>
           ))}
         </div>

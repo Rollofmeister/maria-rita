@@ -15,7 +15,7 @@ export function CTASection() {
         <TrackedExternalLink
           href={buildWhatsAppUrl("avaliacao", "home_cta_final")}
           eventName="whatsapp_click"
-          eventData={{ source: "home_cta", intent: "avaliacao" }}
+          eventData={{ source: "home_cta_final", intent: "avaliacao" }}
           className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground hover:bg-teal-light transition-colors"
         >
           <Phone className="h-5 w-5" />

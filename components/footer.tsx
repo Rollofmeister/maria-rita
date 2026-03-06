@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react"
 import { Instagram, Mail, MapPin, Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
+import { clinicAddress } from "@/lib/clinic-info"
 
 export function Footer() {
   const signatureRef = useRef<HTMLDivElement | null>(null)
@@ -117,7 +118,9 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 mt-0.5 text-teal-light shrink-0" />
                 <span className="text-sm text-background/70">
-                  Centro, Campo Mourão - PR
+                  {clinicAddress.street}
+                  <br />
+                  {clinicAddress.complement}
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -125,7 +128,7 @@ export function Footer() {
                 <TrackedExternalLink
                   href={buildWhatsAppUrl("consulta-geral", "footer_telefone")}
                   eventName="whatsapp_click"
-                  eventData={{ source: "footer_phone", intent: "consulta-geral" }}
+                  eventData={{ source: "footer_telefone", intent: "consulta-geral" }}
                   className="text-sm text-background/70 hover:text-background transition-colors"
                 >
                   (44) 99834-6194
@@ -134,10 +137,10 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Mail className="h-4 w-4 mt-0.5 text-teal-light shrink-0" />
                 <a
-                  href="mailto:contato@dramariagasparello.com.br"
+                  href="mailto:contato@dramariarita.com"
                   className="text-sm text-background/70 hover:text-background transition-colors"
                 >
-                  contato@dramariagasparello.com.br
+                  contato@dramariarita.com
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -148,7 +151,7 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="text-sm text-background/70 hover:text-background transition-colors"
                 >
-                  @dramariagasparello
+                  @dra.mariaritagas
                 </a>
               </li>
             </ul>

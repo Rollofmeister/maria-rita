@@ -6,6 +6,7 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 import { GraduationCap, Heart, Award, Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
+import { clinicAddress, clinicMapEmbedUrl } from "@/lib/clinic-info"
 
 export const metadata: Metadata = {
   title: "Sobre a Doutora | Dra. Maria Rita Gasparello - Dentista em Campo Mourão",
@@ -26,7 +27,7 @@ export default function SobrePage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
               <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/images/dentist-about.webp"
+                  src="/images/hero-new.webp"
                   alt="Dra. Maria Rita Gasparello em seu consultório"
                   fill
                   className="object-cover"
@@ -149,12 +150,13 @@ export default function SobrePage() {
                 Um ambiente pensado para o seu conforto
               </h2>
             </div>
-            <div className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-xl">
+            <div className="rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/clinic-interior.jpg"
+                src="/images/consultorio2.webp"
                 alt="Interior do consultório odontológico da Dra. Maria Rita Gasparello"
-                fill
-                className="object-cover"
+                width={1200}
+                height={1600}
+                className="w-full h-auto"
                 sizes="100vw"
               />
             </div>
@@ -162,6 +164,48 @@ export default function SobrePage() {
               Nosso consultório foi projetado para oferecer uma experiência tranquila e acolhedora. 
               Cada detalhe foi pensado para proporcionar conforto e segurança durante todo o seu atendimento.
             </p>
+          </div>
+        </section>
+
+        {/* Location */}
+        <section className="py-16 lg:py-24 bg-background">
+          <div className="mx-auto max-w-7xl px-4 lg:px-8">
+            <div className="text-center mb-12">
+              <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-3">
+                Onde estamos
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-foreground text-balance">
+                Localização do consultório
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-border">
+                <iframe
+                  title="Mapa do consultório"
+                  src={clinicMapEmbedUrl}
+                  className="w-full h-[380px] md:h-[450px]"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
+              <div className="rounded-2xl border border-border bg-card p-8">
+                <h3 className="font-serif text-2xl font-bold text-foreground">
+                  Endereço
+                </h3>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  {clinicAddress.building}
+                  <br />
+                  {clinicAddress.street}
+                </p>
+                <p className="mt-4 text-muted-foreground leading-relaxed">
+                  {clinicAddress.complement}
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -178,7 +222,7 @@ export default function SobrePage() {
             <TrackedExternalLink
               href={buildWhatsAppUrl("visita-consultorio", "sobre_cta")}
               eventName="whatsapp_click"
-              eventData={{ source: "about_page", intent: "visita-consultorio" }}
+              eventData={{ source: "sobre_cta", intent: "visita-consultorio" }}
               className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground hover:bg-teal-light transition-colors"
             >
               <Phone className="h-5 w-5" />

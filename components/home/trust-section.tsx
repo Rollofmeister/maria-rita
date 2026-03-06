@@ -8,18 +8,18 @@ const stats = [
   },
   {
     icon: Clock,
-    label: "Especializada",
-    description: "Experiência clínica",
+    label: "Plano por etapas",
+    description: "Você sabe o que vem agora",
   },
   {
     icon: Users,
-    label: "+2.000",
-    description: "Pacientes atendidos",
+    label: "Atendimento humanizado",
+    description: "Escuta ativa em cada consulta",
   },
   {
     icon: Shield,
-    label: "100%",
-    description: "Biossegurança",
+    label: "Biossegurança rigorosa",
+    description: "Protocolos clínicos atualizados",
   },
 ]
 

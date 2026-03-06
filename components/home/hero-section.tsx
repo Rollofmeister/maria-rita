@@ -26,7 +26,7 @@ export function HeroSection() {
               <TrackedExternalLink
                 href={buildWhatsAppUrl("primeira-consulta", "home_hero_principal")}
                 eventName="whatsapp_click"
-                eventData={{ source: "home_hero", intent: "primeira-consulta" }}
+                eventData={{ source: "home_hero_principal", intent: "primeira-consulta" }}
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-teal-dark transition-colors"
               >
                 <Phone className="h-4 w-4" />
@@ -56,7 +56,7 @@ export function HeroSection() {
           <div className="relative animate-fade-in-up animation-delay-200">
             <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
               <Image
-                src="/images/dentist-hero.webp"
+                src="/images/hero-blue.webp"
                 alt="Dra. Maria Rita Gasparello - Dentista em Campo Mourão"
                 fill
                 className="object-cover"

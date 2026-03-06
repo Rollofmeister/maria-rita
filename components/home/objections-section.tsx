@@ -68,7 +68,7 @@ export function ObjectionsSection() {
             <TrackedExternalLink
               href={buildWhatsAppUrl("avaliacao", "home_objecoes")}
               eventName="whatsapp_click"
-              eventData={{ source: "home_objections", intent: "avaliacao" }}
+              eventData={{ source: "home_objecoes", intent: "avaliacao" }}
               className="inline-flex items-center justify-center rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-teal-dark transition-colors"
             >
               Tirar dúvidas e agendar avaliação

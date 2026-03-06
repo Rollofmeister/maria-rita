@@ -1,4 +1,5 @@
 import { faqs } from "@/lib/faq-data"
+import { clinicAddress } from "@/lib/clinic-info"
 
 const fallbackSiteUrl = "http://localhost:3000"
 
@@ -17,13 +18,15 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: "Dra. Maria Rita Gasparello",
-  image: absoluteUrl("/images/dentist-hero.webp"),
+  image: absoluteUrl("/images/hero-blue.webp"),
   url: siteUrl,
   telephone: "+55 44 99834-6194",
   address: {
     "@type": "PostalAddress",
+    streetAddress: `${clinicAddress.street}, ${clinicAddress.complement}`,
     addressLocality: "Campo Mourao",
     addressRegion: "PR",
+    postalCode: "87300-005",
     addressCountry: "BR",
   },
   areaServed: {

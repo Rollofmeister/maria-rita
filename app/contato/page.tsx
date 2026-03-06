@@ -7,6 +7,7 @@ import { MapPin, Phone, Mail, Instagram, Clock, MessageCircle } from "lucide-rea
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
 import { faqPageSchema } from "@/lib/seo"
+import { clinicAddress, clinicMapEmbedUrl, clinicMapLink } from "@/lib/clinic-info"
 
 export const metadata: Metadata = {
   title: "Contato | Dra. Maria Rita Gasparello - Dentista em Campo Mourão",
@@ -20,26 +21,30 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Endereço",
-    value: "Centro, Campo Mourão - PR",
-    href: "https://www.google.com/maps/search/dentista+centro+campo+mourao+pr",
+    value: clinicAddress.full,
+    href: clinicMapLink,
+    isWhatsApp: false,
   },
   {
     icon: Phone,
     label: "WhatsApp",
     value: "(44) 99834-6194",
     href: buildWhatsAppUrl("consulta-geral", "contato_info_whatsapp"),
+    isWhatsApp: true,
   },
   {
     icon: Mail,
     label: "E-mail",
-    value: "contato@dramariagasparello.com.br",
-    href: "mailto:contato@dramariagasparello.com.br",
+    value: "contato@dramariarita.com",
+    href: "mailto:contato@dramariarita.com",
+    isWhatsApp: false,
   },
   {
     icon: Instagram,
     label: "Instagram",
-    value: "@dramariagasparello",
+    value: "@dra.mariaritagas",
     href: "https://instagram.com/dramariagasparello",
+    isWhatsApp: false,
   },
 ]
 
@@ -87,25 +92,47 @@ export default function ContatoPage() {
                 </h2>
                 <div className="flex flex-col gap-6">
                   {contactInfo.map((info) => (
-                    <a
-                      key={info.label}
-                      href={info.href}
-                      target={info.href.startsWith("http") ? "_blank" : undefined}
-                      rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="group flex items-start gap-4 p-4 rounded-xl border border-border bg-card hover:shadow-md hover:border-primary/30 transition-all"
-                    >
-                      <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10 shrink-0 group-hover:bg-primary/20 transition-colors">
-                        <info.icon className="h-5 w-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-0.5">
-                          {info.label}
-                        </p>
-                        <p className="text-sm font-medium text-foreground">
-                          {info.value}
-                        </p>
-                      </div>
-                    </a>
+                    info.isWhatsApp ? (
+                      <TrackedExternalLink
+                        key={info.label}
+                        href={info.href}
+                        eventName="whatsapp_click"
+                        eventData={{ source: "contato_info_whatsapp", intent: "consulta-geral" }}
+                        className="group flex items-start gap-4 p-4 rounded-xl border border-border bg-card hover:shadow-md hover:border-primary/30 transition-all"
+                      >
+                        <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10 shrink-0 group-hover:bg-primary/20 transition-colors">
+                          <info.icon className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-0.5">
+                            {info.label}
+                          </p>
+                          <p className="text-sm font-medium text-foreground">
+                            {info.value}
+                          </p>
+                        </div>
+                      </TrackedExternalLink>
+                    ) : (
+                      <a
+                        key={info.label}
+                        href={info.href}
+                        target={info.href.startsWith("http") ? "_blank" : undefined}
+                        rel={info.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                        className="group flex items-start gap-4 p-4 rounded-xl border border-border bg-card hover:shadow-md hover:border-primary/30 transition-all"
+                      >
+                        <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-primary/10 shrink-0 group-hover:bg-primary/20 transition-colors">
+                          <info.icon className="h-5 w-5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-0.5">
+                            {info.label}
+                          </p>
+                          <p className="text-sm font-medium text-foreground">
+                            {info.value}
+                          </p>
+                        </div>
+                      </a>
+                    )
                   ))}
                 </div>
 
@@ -132,7 +159,7 @@ export default function ContatoPage() {
                 <TrackedExternalLink
                   href={buildWhatsAppUrl("primeira-consulta", "contato_cta_principal")}
                   eventName="whatsapp_click"
-                  eventData={{ source: "contact_page", intent: "primeira-consulta" }}
+                  eventData={{ source: "contato_cta_principal", intent: "primeira-consulta" }}
                   className="mt-8 flex items-center justify-center gap-2 w-full rounded-lg bg-primary px-6 py-4 text-base font-semibold text-primary-foreground hover:bg-teal-dark transition-colors"
                 >
                   <MessageCircle className="h-5 w-5" />
@@ -147,19 +174,17 @@ export default function ContatoPage() {
                 </h2>
                 <div className="relative aspect-square lg:aspect-[4/3] rounded-xl overflow-hidden border border-border shadow-sm">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14485.48!2d-52.378!3d-24.046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94eff4e2f53bbfa5%3A0xee3e8c5d5a1e0c68!2sCentro%2C%20Campo%20Mour%C3%A3o%20-%20PR!5e0!3m2!1spt-BR!2sbr!4v1709577600000!5m2!1spt-BR!2sbr"
-                    width="100%"
-                    height="100%"
+                    title="Mapa do consultório"
+                    src={clinicMapEmbedUrl}
+                    className="absolute inset-0 h-full w-full"
                     style={{ border: 0 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Localização do consultório da Dra. Maria Rita Gasparello em Campo Mourão"
-                    className="absolute inset-0"
                   />
                 </div>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  Estamos na região central de Campo Mourão, com fácil acesso e estacionamento disponível nas proximidades.
+                  {clinicAddress.building}. {clinicAddress.street} {clinicAddress.complement}.
                 </p>
               </div>
             </div>

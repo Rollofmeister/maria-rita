@@ -152,7 +152,7 @@ export default function TratamentosPage() {
             <TrackedExternalLink
               href={buildWhatsAppUrl("avaliacao", "tratamentos_cta")}
               eventName="whatsapp_click"
-              eventData={{ source: "treatments_page", intent: "avaliacao" }}
+              eventData={{ source: "tratamentos_cta", intent: "avaliacao" }}
               className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground hover:bg-teal-light transition-colors"
             >
               <Phone className="h-5 w-5" />

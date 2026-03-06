@@ -42,7 +42,7 @@ export async function generateMetadata({
       publishedTime: post.date,
       images: [
         {
-          url: absoluteUrl("/images/dentist-hero.webp"),
+          url: absoluteUrl("/images/hero-blue.webp"),
           width: 1200,
           height: 630,
           alt: post.title,
@@ -110,7 +110,7 @@ export default async function BlogPostPage({
         url: absoluteUrl("/icon.svg"),
       },
     },
-    image: [absoluteUrl("/images/dentist-hero.webp")],
+    image: [absoluteUrl("/images/hero-blue.webp")],
     articleSection: post.category,
   }
 
@@ -227,7 +227,7 @@ export default async function BlogPostPage({
               <TrackedExternalLink
                 href={buildWhatsAppUrl("consulta-geral", `blog_artigo_${post.slug}`)}
                 eventName="whatsapp_click"
-                eventData={{ source: "blog_article", slug: post.slug, intent: "consulta-geral" }}
+                eventData={{ source: `blog_artigo_${post.slug}`, slug: post.slug, intent: "consulta-geral" }}
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-teal-dark transition-colors"
               >
                 <Phone className="h-4 w-4" />
