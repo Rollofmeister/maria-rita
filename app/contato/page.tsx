@@ -43,7 +43,7 @@ const contactInfo = [
     icon: Instagram,
     label: "Instagram",
     value: "@dra.mariaritagas",
-    href: "https://instagram.com/dramariagasparello",
+    href: "https://instagram.com/dra.mariaritagas",
     isWhatsApp: false,
   },
 ]

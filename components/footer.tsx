@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useEffect, useRef } from "react"
 import { Instagram, Mail, MapPin, Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
@@ -48,14 +49,15 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <div className="flex flex-col">
-              <span className="font-serif text-xl font-bold tracking-tight">
-                Dra. Maria Rita
-              </span>
-              <span className="text-sm text-background/60 tracking-wide uppercase">
-                Gasparello
-              </span>
-            </div>
+            <Link href="/" className="inline-flex" aria-label="Voltar para a pagina inicial">
+              <Image
+                src="/logo-maria-rita-new.webp"
+                alt="Maria Rita Gasparello"
+                width={220}
+                height={92}
+                className="h-16 w-auto brightness-0 invert"
+              />
+            </Link>
             <p className="mt-4 text-sm text-background/70 leading-relaxed">
               Odontologia preventiva e tratamentos modernos em Campo Mourão - PR.
             </p>
@@ -146,7 +148,7 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <Instagram className="h-4 w-4 mt-0.5 text-teal-light shrink-0" />
                 <a
-                  href="https://instagram.com/dramariagasparello"
+                  href="https://instagram.com/dra.mariaritagas"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-background/70 hover:text-background transition-colors"

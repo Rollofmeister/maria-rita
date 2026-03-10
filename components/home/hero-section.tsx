@@ -19,18 +19,19 @@ export function HeroSection() {
               </h1>
             </div>
             <p className="text-lg text-muted-foreground leading-relaxed max-w-lg animate-fade-in-up animation-delay-200">
-              Atendimento humanizado para prevenção, limpeza, clareamento e restaurações.
-              Você entende os próximos passos antes de iniciar qualquer procedimento.
+              Atendimento com horário marcado em Campo Mourão para prevenção, limpeza,
+              clareamento e restaurações. Você entende os próximos passos antes de iniciar
+              qualquer procedimento.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
               <TrackedExternalLink
-                href={buildWhatsAppUrl("primeira-consulta", "home_hero_principal")}
+                href={buildWhatsAppUrl("avaliacao", "home_hero_principal")}
                 eventName="whatsapp_click"
-                eventData={{ source: "home_hero_principal", intent: "primeira-consulta" }}
+                eventData={{ source: "home_hero_principal", intent: "avaliacao" }}
                 className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-teal-dark transition-colors"
               >
                 <Phone className="h-4 w-4" />
-                Agendar primeira consulta
+                Agendar avaliação pelo WhatsApp
               </TrackedExternalLink>
               <a
                 href="/tratamentos"
@@ -44,6 +45,10 @@ export function HeroSection() {
               <span className="inline-flex items-center gap-2">
                 <Clock3 className="h-4 w-4 text-primary" />
                 Retorno no WhatsApp em horário comercial
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Clock3 className="h-4 w-4 text-primary" />
+                Atendimento com horário marcado
               </span>
               <span className="inline-flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-primary" />

@@ -36,7 +36,7 @@ export function ObjectionsSection() {
               Respostas rápidas para decidir com segurança
             </h2>
             <p className="mt-4 text-muted-foreground leading-relaxed max-w-xl">
-              Se você está adiando sua consulta por medo, tempo ou custo, comece por uma avaliação. Você recebe orientação clara antes de qualquer procedimento.
+              Se você está adiando sua consulta por medo, tempo ou custo, comece por uma avaliação. Você recebe orientação clara sobre prioridade, prazo e próximos passos antes de qualquer procedimento.
             </p>
             <div className="mt-8 flex items-start gap-3 rounded-xl border border-border bg-secondary p-4">
               <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />

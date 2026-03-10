@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, X, Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
@@ -21,14 +22,19 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <span className="font-serif text-lg lg:text-xl font-bold text-foreground tracking-tight">
-              Dra. Maria Rita
-            </span>
-            <span className="text-xs text-muted-foreground -mt-1 tracking-wide uppercase">
-              Gasparello
-            </span>
+          <Link
+            href="/"
+            className="flex flex-shrink-0 items-center"
+            aria-label="Voltar para a pagina inicial"
+          >
+            <Image
+              src="/maria-rita-navbar.webp"
+              alt="Maria Rita Gasparello"
+              width={368}
+              height={100}
+              priority
+              className="h-[3.25rem] w-auto object-contain lg:h-[3.75rem]"
+            />
           </Link>
 
           {/* Desktop Nav */}
@@ -52,7 +58,7 @@ export function Header() {
             className="hidden lg:inline-flex items-center gap-2 rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground hover:bg-teal-dark transition-colors"
           >
             <Phone className="h-4 w-4" />
-            Agendar consulta
+            Agendar pelo WhatsApp
           </TrackedExternalLink>
 
           {/* Mobile Toggle */}
@@ -87,7 +93,7 @@ export function Header() {
               className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
             >
               <Phone className="h-4 w-4" />
-              Agendar consulta
+              Agendar pelo WhatsApp
             </TrackedExternalLink>
           </nav>
         </div>

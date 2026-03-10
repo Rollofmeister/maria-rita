@@ -33,7 +33,7 @@ export const localBusinessSchema = {
     "@type": "City",
     name: "Campo Mourao",
   },
-  sameAs: ["https://instagram.com/dramariagasparello"],
+  sameAs: ["https://instagram.com/dra.mariaritagas"],
 }
 
 export const websiteSchema = {
