@@ -157,13 +157,13 @@ export default function ContatoPage() {
 
                 {/* WhatsApp CTA */}
                 <TrackedExternalLink
-                  href={buildWhatsAppUrl("primeira-consulta", "contato_cta_principal")}
+                  href={buildWhatsAppUrl("avaliacao", "contato_cta_principal")}
                   eventName="whatsapp_click"
-                  eventData={{ source: "contato_cta_principal", intent: "primeira-consulta" }}
+                  eventData={{ source: "contato_cta_principal", intent: "avaliacao" }}
                   className="mt-8 flex items-center justify-center gap-2 w-full rounded-lg bg-primary px-6 py-4 text-base font-semibold text-primary-foreground hover:bg-teal-dark transition-colors"
                 >
                   <MessageCircle className="h-5 w-5" />
-                  Agendar consulta pelo WhatsApp
+                  Agendar avaliação pelo WhatsApp
                 </TrackedExternalLink>
               </div>
 

@@ -219,19 +219,20 @@ export default async function BlogPostPage({
             {/* CTA in article */}
             <div className="mt-12 p-8 rounded-xl bg-secondary border border-border text-center">
               <h3 className="font-serif text-xl font-bold text-foreground mb-2">
-                Agende sua consulta
+                Agende sua avaliação
               </h3>
               <p className="text-sm text-muted-foreground mb-6">
-                Cuide da sua saúde bucal com a Dra. Maria Rita Gasparello em Campo Mourão.
+                Fale no WhatsApp e receba orientação inicial para cuidar da sua saúde
+                bucal em Campo Mourão.
               </p>
               <TrackedExternalLink
-                href={buildWhatsAppUrl("consulta-geral", `blog_artigo_${post.slug}`)}
+                href={buildWhatsAppUrl("avaliacao", `blog_artigo_${post.slug}`)}
                 eventName="whatsapp_click"
-                eventData={{ source: `blog_artigo_${post.slug}`, slug: post.slug, intent: "consulta-geral" }}
+                eventData={{ source: `blog_artigo_${post.slug}`, slug: post.slug, intent: "avaliacao" }}
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground hover:bg-teal-dark transition-colors"
               >
                 <Phone className="h-4 w-4" />
-                Agendar pelo WhatsApp
+                Agendar avaliação pelo WhatsApp
               </TrackedExternalLink>
             </div>
           </div>

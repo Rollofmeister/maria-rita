@@ -146,8 +146,8 @@ export default function TratamentosPage() {
               Agende sua avaliação
             </h2>
             <p className="mt-4 text-background/70 max-w-lg mx-auto leading-relaxed">
-              O primeiro passo para um sorriso saudável é uma avaliação completa. 
-              Entre em contato pelo WhatsApp e agende sua consulta.
+              O primeiro passo para um sorriso saudável é uma avaliação completa.
+              Fale no WhatsApp e encontre o melhor horário para começar.
             </p>
             <TrackedExternalLink
               href={buildWhatsAppUrl("avaliacao", "tratamentos_cta")}
@@ -156,7 +156,7 @@ export default function TratamentosPage() {
               className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground hover:bg-teal-light transition-colors"
             >
               <Phone className="h-5 w-5" />
-              Agendar pelo WhatsApp
+              Agendar avaliação pelo WhatsApp
             </TrackedExternalLink>
           </div>
         </section>

@@ -216,8 +216,8 @@ export default function SobrePage() {
               Venha nos conhecer
             </h2>
             <p className="mt-4 text-background/70 max-w-lg mx-auto leading-relaxed">
-              Agende uma visita e conheça de perto nosso consultório e nossa equipe. 
-              Estamos prontos para cuidar do seu sorriso.
+              Agende uma visita pelo WhatsApp e conheça de perto o consultório antes
+              do seu atendimento.
             </p>
             <TrackedExternalLink
               href={buildWhatsAppUrl("visita-consultorio", "sobre_cta")}
@@ -226,7 +226,7 @@ export default function SobrePage() {
               className="mt-8 inline-flex items-center gap-2 rounded-lg bg-primary px-8 py-4 text-base font-semibold text-primary-foreground hover:bg-teal-light transition-colors"
             >
               <Phone className="h-5 w-5" />
-              Agendar uma visita
+              Agendar visita pelo WhatsApp
             </TrackedExternalLink>
           </div>
         </section>
