@@ -1,5 +1,5 @@
 import { faqs } from "@/lib/faq-data"
-import { clinicAddress } from "@/lib/clinic-info"
+import { clinicAddress, clinicGeo } from "@/lib/clinic-info"
 
 const fallbackSiteUrl = "http://localhost:3000"
 
@@ -29,11 +29,42 @@ export const localBusinessSchema = {
     postalCode: "87300-005",
     addressCountry: "BR",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: clinicGeo.latitude,
+    longitude: clinicGeo.longitude,
+  },
+  openingHours: ["Mo-Fr 08:00-18:00", "Sa 08:00-12:00"],
   areaServed: {
     "@type": "City",
     name: "Campo Mourao",
   },
   sameAs: ["https://instagram.com/dra.mariaritagas"],
+}
+
+export const dentistPersonSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Dra. Maria Rita Gasparello",
+  honorificPrefix: "Dra.",
+  jobTitle: "Cirurgiã-Dentista",
+  hasCredential: {
+    "@type": "EducationalOccupationalCredential",
+    credentialCategory: "license",
+    recognizedBy: {
+      "@type": "Organization",
+      name: "Conselho Regional de Odontologia do Paraná",
+      alternateName: "CRO/PR",
+    },
+    identifier: "40.050",
+  },
+  worksFor: {
+    "@type": "Dentist",
+    name: "Dra. Maria Rita Gasparello",
+    url: siteUrl,
+  },
+  sameAs: ["https://instagram.com/dra.mariaritagas"],
+  url: absoluteUrl("/sobre"),
 }
 
 export const websiteSchema = {
@@ -42,6 +73,27 @@ export const websiteSchema = {
   name: siteName,
   url: siteUrl,
   inLanguage: "pt-BR",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+}
+
+export function breadcrumbSchema(items: { name: string; url: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: item.name,
+      item: item.url,
+    })),
+  }
 }
 
 export const faqPageSchema = {

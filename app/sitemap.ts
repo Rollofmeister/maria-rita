@@ -6,31 +6,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     {
       url: absoluteUrl("/"),
-      lastModified: new Date(),
+      lastModified: new Date("2026-03-01"),
       changeFrequency: "weekly",
       priority: 1,
     },
     {
       url: absoluteUrl("/tratamentos"),
-      lastModified: new Date(),
+      lastModified: new Date("2026-03-01"),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: absoluteUrl("/contato"),
-      lastModified: new Date(),
+      lastModified: new Date("2026-03-01"),
       changeFrequency: "weekly",
       priority: 0.9,
     },
     {
       url: absoluteUrl("/sobre"),
-      lastModified: new Date(),
+      lastModified: new Date("2026-02-01"),
       changeFrequency: "monthly",
       priority: 0.7,
     },
     {
       url: absoluteUrl("/blog"),
-      lastModified: new Date(),
+      lastModified: new Date("2026-03-01"),
       changeFrequency: "weekly",
       priority: 0.8,
     },

@@ -6,7 +6,7 @@ import { FAQSection } from "@/components/faq-section"
 import { MapPin, Phone, Mail, Instagram, Clock, MessageCircle } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
-import { faqPageSchema } from "@/lib/seo"
+import { faqPageSchema, absoluteUrl, siteName, breadcrumbSchema } from "@/lib/seo"
 import { clinicAddress, clinicMapEmbedUrl, clinicMapLink } from "@/lib/clinic-info"
 
 export const metadata: Metadata = {
@@ -14,6 +14,28 @@ export const metadata: Metadata = {
   description: "Entre em contato com a Dra. Maria Rita Gasparello. Agende sua consulta odontológica em Campo Mourão pelo WhatsApp. Endereço, telefone e horários de atendimento.",
   alternates: {
     canonical: "/contato",
+  },
+  openGraph: {
+    title: "Contato — Dra. Maria Rita Gasparello | Dentista em Campo Mourão",
+    description: "Entre em contato com a Dra. Maria Rita Gasparello. Agende sua consulta odontológica em Campo Mourão pelo WhatsApp. Endereço, telefone e horários de atendimento.",
+    url: absoluteUrl("/contato"),
+    siteName,
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: absoluteUrl("/images/hero-blue.webp"),
+        width: 1200,
+        height: 630,
+        alt: "Consultório Dra. Maria Rita Gasparello - Campo Mourão",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contato — Dra. Maria Rita Gasparello | Dentista em Campo Mourão",
+    description: "Entre em contato com a Dra. Maria Rita Gasparello. Agende sua consulta odontológica em Campo Mourão pelo WhatsApp. Endereço, telefone e horários de atendimento.",
+    images: [absoluteUrl("/images/hero-blue.webp")],
   },
 }
 
@@ -62,6 +84,17 @@ export default function ContatoPage() {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              breadcrumbSchema([
+                { name: "Início", url: absoluteUrl("/") },
+                { name: "Contato", url: absoluteUrl("/contato") },
+              ])
+            ),
+          }}
         />
         {/* Hero */}
         <section className="py-16 lg:py-24 bg-secondary">

@@ -10,3 +10,8 @@ export const clinicMapEmbedUrl =
 
 export const clinicMapLink =
   "https://www.google.com/maps/search/?api=1&query=Av.+Cap.+%C3%8Dndio+Bandeira%2C+1400+-+Centro%2C+Campo+Mour%C3%A3o+-+PR%2C+87300-005"
+
+export const clinicGeo = {
+  latitude: -24.042709,
+  longitude: -52.377042,
+}

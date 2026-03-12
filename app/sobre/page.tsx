@@ -7,12 +7,35 @@ import { GraduationCap, Heart, Award, Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
 import { clinicAddress, clinicMapEmbedUrl } from "@/lib/clinic-info"
+import { dentistPersonSchema, absoluteUrl, siteName, breadcrumbSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Sobre a Doutora | Dra. Maria Rita Gasparello - Dentista em Campo Mourão",
   description: "Conheça a Dra. Maria Rita Gasparello, cirurgiã-dentista em Campo Mourão - PR. Formação, especialização e filosofia de atendimento.",
   alternates: {
     canonical: "/sobre",
+  },
+  openGraph: {
+    title: "Dra. Maria Rita Gasparello — Dentista em Campo Mourão",
+    description: "Conheça a Dra. Maria Rita Gasparello, cirurgiã-dentista em Campo Mourão - PR. Formação, especialização e filosofia de atendimento.",
+    url: absoluteUrl("/sobre"),
+    siteName,
+    locale: "pt_BR",
+    type: "profile",
+    images: [
+      {
+        url: absoluteUrl("/images/hero-new.webp"),
+        width: 1200,
+        height: 630,
+        alt: "Dra. Maria Rita Gasparello - Cirurgiã-Dentista em Campo Mourão",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dra. Maria Rita Gasparello — Dentista em Campo Mourão",
+    description: "Conheça a Dra. Maria Rita Gasparello, cirurgiã-dentista em Campo Mourão - PR. Formação, especialização e filosofia de atendimento.",
+    images: [absoluteUrl("/images/hero-new.webp")],
   },
 }
 
@@ -21,6 +44,21 @@ export default function SobrePage() {
     <>
       <Header />
       <main className="pt-20">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(dentistPersonSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              breadcrumbSchema([
+                { name: "Início", url: absoluteUrl("/") },
+                { name: "Sobre a Doutora", url: absoluteUrl("/sobre") },
+              ])
+            ),
+          }}
+        />
         {/* Hero */}
         <section className="py-16 lg:py-24 bg-secondary">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">

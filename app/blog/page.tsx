@@ -7,12 +7,35 @@ import { blogPosts } from "@/lib/blog-data"
 import { ArrowRight, Clock, Calendar } from "lucide-react"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
+import { absoluteUrl, siteName, breadcrumbSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Blog | Dra. Maria Rita Gasparello - Dentista em Campo Mourão",
   description: "Dicas de saúde bucal, informações sobre tratamentos odontológicos e novidades. Blog da Dra. Maria Rita Gasparello, dentista em Campo Mourão.",
   alternates: {
     canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog de Saúde Bucal — Dra. Maria Rita Gasparello",
+    description: "Dicas de saúde bucal, informações sobre tratamentos odontológicos e novidades. Blog da Dra. Maria Rita Gasparello, dentista em Campo Mourão.",
+    url: absoluteUrl("/blog"),
+    siteName,
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: absoluteUrl("/images/hero-blue.webp"),
+        width: 1200,
+        height: 630,
+        alt: "Blog de Saúde Bucal - Dra. Maria Rita Gasparello",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog de Saúde Bucal — Dra. Maria Rita Gasparello",
+    description: "Dicas de saúde bucal, informações sobre tratamentos odontológicos e novidades. Blog da Dra. Maria Rita Gasparello, dentista em Campo Mourão.",
+    images: [absoluteUrl("/images/hero-blue.webp")],
   },
 }
 
@@ -21,6 +44,17 @@ export default function BlogPage() {
     <>
       <Header />
       <main className="pt-20">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              breadcrumbSchema([
+                { name: "Início", url: absoluteUrl("/") },
+                { name: "Blog", url: absoluteUrl("/blog") },
+              ])
+            ),
+          }}
+        />
         {/* Hero */}
         <section className="py-16 lg:py-24 bg-secondary">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">

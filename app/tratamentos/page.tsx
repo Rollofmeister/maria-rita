@@ -5,12 +5,35 @@ import { WhatsAppButton } from "@/components/whatsapp-button"
 import { ShieldCheck, Sparkles, Droplets, PaintBucket, HeartPulse, Phone, ArrowRight } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
+import { absoluteUrl, siteName, breadcrumbSchema } from "@/lib/seo"
 
 export const metadata: Metadata = {
   title: "Tratamentos | Dra. Maria Rita Gasparello - Dentista em Campo Mourão",
   description: "Conheça nossos tratamentos odontológicos: prevenção, limpeza, clareamento dental, restaurações e cuidados preventivos em Campo Mourão - PR.",
   alternates: {
     canonical: "/tratamentos",
+  },
+  openGraph: {
+    title: "Tratamentos Odontológicos em Campo Mourão - PR",
+    description: "Conheça nossos tratamentos odontológicos: prevenção, limpeza, clareamento dental, restaurações e cuidados preventivos em Campo Mourão - PR.",
+    url: absoluteUrl("/tratamentos"),
+    siteName,
+    locale: "pt_BR",
+    type: "website",
+    images: [
+      {
+        url: absoluteUrl("/images/hero-blue.webp"),
+        width: 1200,
+        height: 630,
+        alt: "Tratamentos odontológicos em Campo Mourão - Dra. Maria Rita Gasparello",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tratamentos Odontológicos em Campo Mourão - PR",
+    description: "Conheça nossos tratamentos odontológicos: prevenção, limpeza, clareamento dental, restaurações e cuidados preventivos em Campo Mourão - PR.",
+    images: [absoluteUrl("/images/hero-blue.webp")],
   },
 }
 
@@ -72,11 +95,42 @@ const treatments = [
   },
 ]
 
+const treatmentsSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Tratamentos Odontológicos - Dra. Maria Rita Gasparello",
+  description: "Serviços odontológicos em Campo Mourão - PR",
+  itemListElement: treatments.map((t, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "MedicalProcedure",
+      name: t.title,
+      description: t.description,
+    },
+  })),
+}
+
 export default function TratamentosPage() {
   return (
     <>
       <Header />
       <main className="pt-20">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(treatmentsSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              breadcrumbSchema([
+                { name: "Início", url: absoluteUrl("/") },
+                { name: "Tratamentos", url: absoluteUrl("/tratamentos") },
+              ])
+            ),
+          }}
+        />
         {/* Hero */}
         <section className="py-16 lg:py-24 bg-secondary">
           <div className="mx-auto max-w-7xl px-4 lg:px-8">

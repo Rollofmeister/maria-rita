@@ -10,7 +10,7 @@ import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
-import { absoluteUrl, siteName } from "@/lib/seo"
+import { absoluteUrl, siteName, breadcrumbSchema } from "@/lib/seo"
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -48,6 +48,12 @@ export async function generateMetadata({
           alt: post.title,
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [absoluteUrl("/images/hero-blue.webp")],
     },
   }
 }
@@ -112,6 +118,7 @@ export default async function BlogPostPage({
     },
     image: [absoluteUrl("/images/hero-blue.webp")],
     articleSection: post.category,
+    keywords: ["dentista em campo mourão", post.category.toLowerCase(), "saúde bucal", "odontologia"],
   }
 
   return (
@@ -121,6 +128,18 @@ export default async function BlogPostPage({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(
+              breadcrumbSchema([
+                { name: "Início", url: absoluteUrl("/") },
+                { name: "Blog", url: absoluteUrl("/blog") },
+                { name: post.title, url: absoluteUrl(`/blog/${post.slug}`) },
+              ])
+            ),
+          }}
         />
         {/* Article Header */}
         <section className="py-12 lg:py-20 bg-secondary">
