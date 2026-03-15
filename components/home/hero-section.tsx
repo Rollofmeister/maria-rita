@@ -1,5 +1,5 @@
 import Image from "next/image"
-import { ArrowRight, Phone, Clock3, ShieldCheck } from "lucide-react"
+import { ArrowRight, Phone, Clock3, CalendarCheck, ShieldCheck } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
 
@@ -47,7 +47,7 @@ export function HeroSection() {
                 Retorno no WhatsApp em horário comercial
               </span>
               <span className="inline-flex items-center gap-2">
-                <Clock3 className="h-4 w-4 text-primary" />
+                <CalendarCheck className="h-4 w-4 text-primary" />
                 Atendimento com horário marcado
               </span>
               <span className="inline-flex items-center gap-2">

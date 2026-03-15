@@ -1,5 +1,5 @@
 import { faqs } from "@/lib/faq-data"
-import { clinicAddress, clinicGeo } from "@/lib/clinic-info"
+import { clinicAddress, clinicGeo, clinicMapLink } from "@/lib/clinic-info"
 
 const fallbackSiteUrl = "http://localhost:3000"
 
@@ -18,13 +18,17 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: "Dra. Maria Rita Gasparello",
+  description: "Cirurgiã-dentista em Campo Mourão — PR. Atendimento humanizado com foco em prevenção, limpeza, clareamento dental e restaurações. CRO/PR 40.050.",
   image: absoluteUrl("/images/hero-blue.webp"),
   url: siteUrl,
   telephone: "+55 44 99834-6194",
+  hasMap: clinicMapLink,
+  medicalSpecialty: "Dentistry",
+  paymentAccepted: "PIX, cartão de crédito, cartão de débito, dinheiro",
   address: {
     "@type": "PostalAddress",
     streetAddress: `${clinicAddress.street}, ${clinicAddress.complement}`,
-    addressLocality: "Campo Mourao",
+    addressLocality: "Campo Mourão",
     addressRegion: "PR",
     postalCode: "87300-005",
     addressCountry: "BR",
@@ -37,7 +41,7 @@ export const localBusinessSchema = {
   openingHours: ["Mo-Fr 08:00-18:00", "Sa 08:00-12:00"],
   areaServed: {
     "@type": "City",
-    name: "Campo Mourao",
+    name: "Campo Mourão",
   },
   sameAs: ["https://instagram.com/dra.mariaritagas"],
 }
@@ -73,14 +77,6 @@ export const websiteSchema = {
   name: siteName,
   url: siteUrl,
   inLanguage: "pt-BR",
-  potentialAction: {
-    "@type": "SearchAction",
-    target: {
-      "@type": "EntryPoint",
-      urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
-    },
-    "query-input": "required name=search_term_string",
-  },
 }
 
 export function breadcrumbSchema(items: { name: string; url: string }[]) {

@@ -22,8 +22,9 @@ No test framework is configured.
 - **`app/`** — Next.js App Router pages (home, blog, tratamentos, sobre, contato). `layout.tsx` includes fonts, analytics, and LocalBusiness schema.
 - **`components/home/`** — The home page is assembled from 8 conversion-funnel sections (hero → trust → benefits → treatments → objections → testimonials → how-it-works → cta).
 - **`components/ui/`** — shadcn/ui primitives; do not edit these directly.
-- **`lib/`** — Centralized utilities: `whatsapp.ts` (URL builder), `clinic-info.ts` (address/maps), `seo.ts` (structured data), `blog-data.ts`, `faq-data.ts`.
+- **`lib/`** — Centralized utilities: `whatsapp.ts` (URL builder), `clinic-info.ts` (address/maps), `seo.ts` (structured data), `blog-data.ts`, `faq-data.ts`, `utils.ts` (shadcn `cn` helper).
 - **`components/analytics/`** — GTM + Meta Pixel tags and marketing event helpers.
+- **Shared components:** `header.tsx`, `footer.tsx`, `whatsapp-button.tsx` (floating mobile CTA, fixed bottom, lg:hidden), `faq-section.tsx`.
 
 ## Mandatory Technical Patterns
 
@@ -63,6 +64,12 @@ For tasks involving metadata, Schema.org, sitemap, robots, canonicals, or SEO st
 /seo-auditor
 ```
 Defined in `skills/seo-auditor/SKILL.md`.
+
+For tasks involving building or redesigning UI components, pages, or visual interfaces:
+```
+/frontend-design
+```
+Defined in `skills/frontend-design/SKILL.md`.
 
 ## SEO Strategy
 
