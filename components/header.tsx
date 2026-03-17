@@ -1,10 +1,8 @@
-"use client"
-
-import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X, Phone } from "lucide-react"
+import { Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
+import { HeaderMobileMenu } from "@/components/header-mobile-menu"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
 
 const navLinks = [
@@ -16,8 +14,6 @@ const navLinks = [
 ]
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
@@ -33,6 +29,7 @@ export function Header() {
               width={368}
               height={100}
               priority
+              sizes="208px"
               className="h-[3.25rem] w-auto object-contain lg:h-[3.75rem]"
             />
           </Link>
@@ -61,43 +58,9 @@ export function Header() {
             Agendar pelo WhatsApp
           </TrackedExternalLink>
 
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-foreground"
-            aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
-          >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
+          <HeaderMobileMenu navLinks={navLinks} />
         </div>
       </div>
-
-      {/* Mobile Nav */}
-      {isOpen && (
-        <div className="lg:hidden bg-background border-t border-border animate-fade-in">
-          <nav className="flex flex-col px-4 py-4 gap-1" aria-label="Navegação mobile">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="py-3 text-base font-medium text-foreground hover:text-primary transition-colors border-b border-border last:border-0"
-              >
-                {link.label}
-              </Link>
-            ))}
-            <TrackedExternalLink
-              href={buildWhatsAppUrl("consulta-geral", "header_mobile")}
-              eventName="whatsapp_click"
-              eventData={{ source: "header_mobile", intent: "consulta-geral" }}
-              className="mt-3 flex items-center justify-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-medium text-primary-foreground"
-            >
-              <Phone className="h-4 w-4" />
-              Agendar pelo WhatsApp
-            </TrackedExternalLink>
-          </nav>
-        </div>
-      )}
     </header>
   )
 }

@@ -111,6 +111,14 @@
   animation: fade-in 0.6s ease-out forwards;
 }
 
+.faq-summary {
+  list-style: none;
+}
+
+.faq-summary::-webkit-details-marker {
+  display: none;
+}
+
 .animation-delay-200 {
   animation-delay: 0.2s;
   opacity: 0;

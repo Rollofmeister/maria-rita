@@ -1,48 +1,12 @@
-"use client"
-
 import Link from "next/link"
 import Image from "next/image"
-import { useEffect, useRef } from "react"
 import { Instagram, Mail, MapPin, Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
+import { FooterSignature } from "@/components/footer-signature"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
 import { clinicAddress } from "@/lib/clinic-info"
 
 export function Footer() {
-  const signatureRef = useRef<HTMLDivElement | null>(null)
-
-  useEffect(() => {
-    let isActive = true
-
-    async function loadSignature() {
-      const target = signatureRef.current
-      if (!target) {
-        return
-      }
-
-      const { mountLSSignature } = await import("ls-signature-footer")
-      if (!isActive) {
-        return
-      }
-
-      mountLSSignature(target, {
-        name: "Luiz Siewerdt",
-        role: "Design e desenvolvimento do site",
-        textColor: "rgba(255,255,255,0.80)",
-        mutedColor: "rgba(255,255,255,0.58)",
-        logoBackground: "#0d9488",
-        logoColor: "#ffffff",
-        fontFamily: "Inter, Inter Fallback, system-ui, sans-serif",
-      })
-    }
-
-    loadSignature()
-
-    return () => {
-      isActive = false
-    }
-  }, [])
-
   return (
     <footer className="bg-foreground text-background">
       <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20">
@@ -55,6 +19,7 @@ export function Footer() {
                 alt="Maria Rita Gasparello"
                 width={220}
                 height={92}
+                sizes="220px"
                 className="h-16 w-auto brightness-0 invert"
               />
             </Link>
@@ -171,7 +136,7 @@ export function Footer() {
             </p>
           </div>
           <div className="flex justify-center">
-            <div ref={signatureRef} aria-label="Assinatura do projeto" />
+            <FooterSignature />
           </div>
         </div>
       </div>

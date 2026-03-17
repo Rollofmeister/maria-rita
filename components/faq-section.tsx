@@ -1,13 +1,7 @@
-"use client"
-
-import { useState } from "react"
 import { ChevronDown } from "lucide-react"
-import { cn } from "@/lib/utils"
 import { faqs } from "@/lib/faq-data"
 
 export function FAQSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null)
-
   return (
     <section className="py-16 lg:py-24 bg-muted">
       <div className="mx-auto max-w-3xl px-4 lg:px-8">
@@ -20,34 +14,25 @@ export function FAQSection() {
           </h2>
         </div>
         <div className="flex flex-col gap-3">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="rounded-xl border border-border bg-card overflow-hidden"
+          {faqs.map((faq) => (
+            <details
+              key={faq.question}
+              className="group rounded-xl border border-border bg-card overflow-hidden"
             >
-              <button
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="flex items-center justify-between w-full p-5 lg:p-6 text-left"
-                aria-expanded={openIndex === index}
-              >
+              <summary className="faq-summary flex cursor-pointer items-center justify-between p-5 text-left lg:p-6">
                 <span className="text-sm lg:text-base font-medium text-foreground pr-4">
                   {faq.question}
                 </span>
                 <ChevronDown
-                  className={cn(
-                    "h-5 w-5 text-muted-foreground shrink-0 transition-transform",
-                    openIndex === index && "rotate-180"
-                  )}
+                  className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180"
                 />
-              </button>
-              {openIndex === index && (
-                <div className="px-5 lg:px-6 pb-5 lg:pb-6 animate-fade-in">
-                  <p className="text-sm text-muted-foreground leading-relaxed">
-                    {faq.answer}
-                  </p>
-                </div>
-              )}
-            </div>
+              </summary>
+              <div className="px-5 pb-5 lg:px-6 lg:pb-6">
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {faq.answer}
+                </p>
+              </div>
+            </details>
           ))}
         </div>
       </div>
