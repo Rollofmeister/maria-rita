@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { Instagram, Mail, MapPin, Phone } from "lucide-react"
+import { Instagram, MapPin, Phone } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { FooterSignature } from "@/components/footer-signature"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
@@ -100,15 +100,6 @@ export function Footer() {
                 >
                   (44) 99834-6194
                 </TrackedExternalLink>
-              </li>
-              <li className="flex items-start gap-3">
-                <Mail className="h-4 w-4 mt-0.5 text-teal-light shrink-0" />
-                <a
-                  href="mailto:contato@dramariarita.com"
-                  className="text-sm text-background/70 hover:text-background transition-colors"
-                >
-                  contato@dramariarita.com
-                </a>
               </li>
               <li className="flex items-start gap-3">
                 <Instagram className="h-4 w-4 mt-0.5 text-teal-light shrink-0" />

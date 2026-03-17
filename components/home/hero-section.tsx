@@ -5,12 +5,12 @@ import { buildWhatsAppUrl } from "@/lib/whatsapp"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center bg-background pt-20">
+    <section className="relative flex min-h-[calc(100svh-4rem)] items-center bg-background pt-24 pb-12 lg:pt-20 lg:pb-0">
       <div className="mx-auto max-w-7xl px-4 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Text */}
           <div className="flex flex-col gap-6 lg:gap-8">
-            <div className="animate-fade-in-up">
+            <div>
               <span className="inline-block text-xs font-semibold uppercase tracking-widest text-primary mb-4">
                 CRO/PR 40.050
               </span>
@@ -18,12 +18,12 @@ export function HeroSection() {
                 Avaliação odontológica em Campo Mourão com plano claro para o seu tratamento.
               </h1>
             </div>
-            <p className="text-lg text-muted-foreground leading-relaxed max-w-lg animate-fade-in-up animation-delay-200">
+            <p className="max-w-lg text-lg leading-relaxed text-muted-foreground">
               Atendimento com horário marcado em Campo Mourão para prevenção, limpeza,
               clareamento e restaurações. Você entende os próximos passos antes de iniciar
               qualquer procedimento.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-400">
+            <div className="flex flex-col gap-4 sm:flex-row">
               <TrackedExternalLink
                 href={buildWhatsAppUrl("avaliacao", "home_hero_principal")}
                 eventName="whatsapp_click"
@@ -41,7 +41,7 @@ export function HeroSection() {
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
-            <div className="flex flex-col sm:flex-row sm:items-center gap-3 text-sm text-muted-foreground animate-fade-in-up animation-delay-600">
+            <div className="flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center">
               <span className="inline-flex items-center gap-2">
                 <Clock3 className="h-4 w-4 text-primary" />
                 Retorno no WhatsApp em horário comercial
@@ -58,19 +58,20 @@ export function HeroSection() {
           </div>
 
           {/* Image */}
-          <div className="relative animate-fade-in-up animation-delay-200">
-            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
+          <div className="relative">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl shadow-xl">
               <Image
                 src="/images/hero-blue.webp"
                 alt="Dra. Maria Rita Gasparello - Dentista em Campo Mourão"
                 fill
                 className="object-cover"
                 priority
+                fetchPriority="high"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
             {/* Floating credential card */}
-            <div className="absolute -bottom-4 -left-4 lg:-left-8 bg-card rounded-xl p-4 shadow-lg border border-border animate-fade-in-up animation-delay-600">
+            <div className="absolute -bottom-4 -left-4 rounded-xl border border-border bg-card p-4 shadow-lg lg:-left-8">
               <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary/10">
                   <svg className="h-5 w-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">

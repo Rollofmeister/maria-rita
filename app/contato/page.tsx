@@ -3,7 +3,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { WhatsAppButton } from "@/components/whatsapp-button"
 import { FAQSection } from "@/components/faq-section"
-import { MapPin, Phone, Mail, Instagram, Clock, MessageCircle } from "lucide-react"
+import { MapPin, Phone, Instagram, Clock, MessageCircle } from "lucide-react"
 import { TrackedExternalLink } from "@/components/tracked-external-link"
 import { buildWhatsAppUrl } from "@/lib/whatsapp"
 import { faqPageSchema, absoluteUrl, siteName, breadcrumbSchema } from "@/lib/seo"
@@ -53,13 +53,6 @@ const contactInfo = [
     value: "(44) 99834-6194",
     href: buildWhatsAppUrl("consulta-geral", "contato_info_whatsapp"),
     isWhatsApp: true,
-  },
-  {
-    icon: Mail,
-    label: "E-mail",
-    value: "contato@dramariarita.com",
-    href: "mailto:contato@dramariarita.com",
-    isWhatsApp: false,
   },
   {
     icon: Instagram,

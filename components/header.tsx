@@ -15,7 +15,7 @@ const navLinks = [
 
 export function Header() {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
+    <header className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           <Link
@@ -28,9 +28,8 @@ export function Header() {
               alt="Maria Rita Gasparello"
               width={368}
               height={100}
-              priority
               sizes="208px"
-              className="h-[3.25rem] w-auto object-contain lg:h-[3.75rem]"
+              className="h-10 w-auto object-contain lg:h-[3.5rem]"
             />
           </Link>
 
