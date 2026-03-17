@@ -1,11 +1,7 @@
 import { faqs } from "@/lib/faq-data"
 import { clinicAddress, clinicGeo, clinicMapLink } from "@/lib/clinic-info"
 
-const fallbackSiteUrl = "http://localhost:3000"
-
-export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || fallbackSiteUrl
-).replace(/\/$/, "")
+export const siteUrl = "https://dramariarita.com"
 
 export const siteName = "Dra. Maria Rita Gasparello"
 

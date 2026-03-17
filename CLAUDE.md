@@ -101,7 +101,8 @@ Defined in `skills/frontend-design/SKILL.md`.
 ## Environment Variables
 
 ```
-NEXT_PUBLIC_SITE_URL       # Canonical site URL
 NEXT_PUBLIC_GTM_ID         # Google Tag Manager ID
 NEXT_PUBLIC_META_PIXEL_ID  # Facebook/Meta Pixel ID
 ```
+
+Canonical site URL is fixed in `lib/seo.ts` as `https://dramariarita.com`.
