@@ -10,17 +10,12 @@ import { HowItWorksSection } from "@/components/home/how-it-works-section"
 import { CTASection } from "@/components/home/cta-section"
 import { ObjectionsSection } from "@/components/home/objections-section"
 import { FAQSection } from "@/components/faq-section"
-import { faqPageSchema } from "@/lib/seo"
 
 export default function HomePage() {
   return (
     <>
       <Header />
       <main>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
-        />
         <HeroSection />
         <TrustSection />
         <BenefitsSection />

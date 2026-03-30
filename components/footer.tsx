@@ -122,9 +122,17 @@ export function Footer() {
             <p className="text-xs text-background/50">
               {'© 2026 Dra. Maria Rita Gasparello. Todos os direitos reservados.'}
             </p>
-            <p className="text-xs text-background/50">
-              CRO/PR 40.050 — Responsável Técnica: Dra. Maria Rita Gasparello
-            </p>
+            <div className="flex items-center gap-4">
+              <Link
+                href="/politica-de-privacidade"
+                className="text-xs text-background/50 hover:text-background/70 transition-colors"
+              >
+                Política de Privacidade
+              </Link>
+              <p className="text-xs text-background/50">
+                CRO/PR 40.050 — Responsável Técnica: Dra. Maria Rita Gasparello
+              </p>
+            </div>
           </div>
           <div className="flex justify-center">
             <FooterSignature />

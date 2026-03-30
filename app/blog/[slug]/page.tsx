@@ -40,6 +40,8 @@ export async function generateMetadata({
       url: absoluteUrl(`/blog/${post.slug}`),
       siteName,
       publishedTime: post.date,
+      authors: ["Dra. Maria Rita Gasparello"],
+      section: post.category,
       images: [
         {
           url: absoluteUrl("/images/hero-blue.webp"),
@@ -97,9 +99,11 @@ export default async function BlogPostPage({
   const elements = parseMarkdown(post.content)
   const articleSchema = {
     "@context": "https://schema.org",
-    "@type": "Article",
+    "@type": "BlogPosting",
+    "@id": absoluteUrl(`/blog/${post.slug}#article`),
     headline: post.title,
     description: post.excerpt,
+    url: absoluteUrl(`/blog/${post.slug}`),
     datePublished: post.date,
     dateModified: post.date,
     inLanguage: "pt-BR",
@@ -107,13 +111,22 @@ export default async function BlogPostPage({
     author: {
       "@type": "Person",
       name: "Dra. Maria Rita Gasparello",
+      url: absoluteUrl("/sobre"),
+      sameAs: ["https://instagram.com/dra.mariaritagas"],
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        credentialCategory: "license",
+        identifier: "CRO/PR 40.050",
+      },
     },
     publisher: {
       "@type": "Organization",
       name: siteName,
       logo: {
         "@type": "ImageObject",
-        url: absoluteUrl("/icon.svg"),
+        url: absoluteUrl("/images/hero-blue.webp"),
+        width: 1200,
+        height: 630,
       },
     },
     image: [absoluteUrl("/images/hero-blue.webp")],
@@ -157,7 +170,11 @@ export default async function BlogPostPage({
             <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground text-balance leading-tight">
               {post.title}
             </h1>
-            <div className="flex items-center gap-4 mt-6 text-sm text-muted-foreground">
+            <p className="mt-4 text-sm font-medium text-foreground/80">
+              Por <Link href="/sobre" className="text-primary hover:underline">Dra. Maria Rita Gasparello</Link>
+              <span className="text-muted-foreground font-normal"> — CRO/PR 40.050</span>
+            </p>
+            <div className="flex items-center gap-4 mt-3 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <Calendar className="h-4 w-4" />
                 {format(new Date(post.date), "d 'de' MMMM 'de' yyyy", { locale: ptBR })}
@@ -174,65 +191,75 @@ export default async function BlogPostPage({
         <section className="py-12 lg:py-20 bg-background">
           <div className="mx-auto max-w-3xl px-4 lg:px-8">
             <article className="flex flex-col gap-5">
-              {elements.map((el, i) => {
-                switch (el.type) {
-                  case "h2":
-                    return (
-                      <h2
-                        key={i}
-                        className="font-serif text-2xl md:text-3xl font-bold text-foreground mt-4"
-                      >
-                        {el.content}
-                      </h2>
+              {(() => {
+                const rendered: React.ReactNode[] = []
+                let i = 0
+                while (i < elements.length) {
+                  const el = elements[i]
+                  if (el.type === "li") {
+                    const listItems: { content: string; idx: number }[] = []
+                    while (i < elements.length && elements[i].type === "li") {
+                      listItems.push({ content: elements[i].content, idx: i })
+                      i++
+                    }
+                    rendered.push(
+                      <ul key={`ul-${listItems[0].idx}`} className="flex flex-col gap-2 ml-6 list-disc">
+                        {listItems.map((item) => (
+                          <li key={item.idx} className="text-muted-foreground leading-relaxed">
+                            {item.content}
+                          </li>
+                        ))}
+                      </ul>
                     )
-                  case "h3":
-                    return (
-                      <h3
-                        key={i}
-                        className="font-serif text-xl md:text-2xl font-bold text-foreground mt-2"
-                      >
-                        {el.content}
-                      </h3>
-                    )
-                  case "li":
-                    return (
-                      <li
-                        key={i}
-                        className="text-muted-foreground leading-relaxed ml-6 list-disc"
-                      >
-                        {el.content}
-                      </li>
-                    )
-                  case "bold":
-                    return (
-                      <p key={i} className="font-semibold text-foreground">
-                        {el.content}
-                      </p>
-                    )
-                  case "bold-text":
-                    return (
-                      <p key={i} className="text-muted-foreground leading-relaxed">
-                        <span
-                          dangerouslySetInnerHTML={{
-                            __html: el.content.replace(
-                              /\*\*(.*?)\*\*/g,
-                              '<strong class="text-foreground font-semibold">$1</strong>'
-                            ),
-                          }}
-                        />
-                      </p>
-                    )
-                  default:
-                    return (
-                      <p
-                        key={i}
-                        className="text-muted-foreground leading-relaxed"
-                      >
-                        {el.content}
-                      </p>
-                    )
+                  } else {
+                    switch (el.type) {
+                      case "h2":
+                        rendered.push(
+                          <h2 key={i} className="font-serif text-2xl md:text-3xl font-bold text-foreground mt-4">
+                            {el.content}
+                          </h2>
+                        )
+                        break
+                      case "h3":
+                        rendered.push(
+                          <h3 key={i} className="font-serif text-xl md:text-2xl font-bold text-foreground mt-2">
+                            {el.content}
+                          </h3>
+                        )
+                        break
+                      case "bold":
+                        rendered.push(
+                          <p key={i} className="font-semibold text-foreground">
+                            {el.content}
+                          </p>
+                        )
+                        break
+                      case "bold-text":
+                        rendered.push(
+                          <p key={i} className="text-muted-foreground leading-relaxed">
+                            <span
+                              dangerouslySetInnerHTML={{
+                                __html: el.content.replace(
+                                  /\*\*(.*?)\*\*/g,
+                                  '<strong class="text-foreground font-semibold">$1</strong>'
+                                ),
+                              }}
+                            />
+                          </p>
+                        )
+                        break
+                      default:
+                        rendered.push(
+                          <p key={i} className="text-muted-foreground leading-relaxed">
+                            {el.content}
+                          </p>
+                        )
+                    }
+                    i++
+                  }
                 }
-              })}
+                return rendered
+              })()}
             </article>
 
             {/* CTA in article */}

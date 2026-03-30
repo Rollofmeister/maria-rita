@@ -29,8 +29,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
     },
     {
+      url: absoluteUrl("/politica-de-privacidade"),
+      lastModified: new Date("2026-03-30"),
+      changeFrequency: "yearly",
+      priority: 0.3,
+    },
+    {
       url: absoluteUrl("/blog"),
-      lastModified: new Date("2026-03-01"),
+      lastModified: new Date(blogPosts[0].date),
       changeFrequency: "weekly",
       priority: 0.8,
     },

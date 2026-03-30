@@ -115,7 +115,7 @@ export default function SobrePage() {
                   <li className="text-sm text-muted-foreground leading-relaxed">
                     <span className="font-semibold text-foreground">Graduação em Odontologia</span>
                     <br />
-                    Universidade reconhecida com excelência na formação de cirurgiões-dentistas
+                    Centro Universitário Integrado de Campo Mourão
                   </li>
                   <li className="text-sm text-muted-foreground leading-relaxed">
                     <span className="font-semibold text-foreground">Especialização em Odontologia Preventiva</span>

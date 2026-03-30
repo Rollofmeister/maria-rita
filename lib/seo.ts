@@ -13,17 +13,18 @@ export function absoluteUrl(path = ""): string {
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "Dentist",
+  "@id": `${siteUrl}/#dentist`,
   name: "Dra. Maria Rita Gasparello",
   description: "Cirurgiã-dentista em Campo Mourão — PR. Atendimento humanizado com foco em prevenção, limpeza, clareamento dental e restaurações. CRO/PR 40.050.",
   image: absoluteUrl("/images/hero-blue.webp"),
   url: siteUrl,
-  telephone: "+55 44 99834-6194",
+  telephone: "+5544998346194",
   hasMap: clinicMapLink,
-  medicalSpecialty: "Dentistry",
+  medicalSpecialty: "https://schema.org/Dentistry",
   paymentAccepted: "PIX, cartão de crédito, cartão de débito, dinheiro",
   address: {
     "@type": "PostalAddress",
-    streetAddress: `${clinicAddress.street}, ${clinicAddress.complement}`,
+    streetAddress: "Av. Cap. Índio Bandeira, 1400, Sala 303, 3º andar",
     addressLocality: "Campo Mourão",
     addressRegion: "PR",
     postalCode: "87300-005",
@@ -45,9 +46,16 @@ export const localBusinessSchema = {
 export const dentistPersonSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${siteUrl}/#person`,
   name: "Dra. Maria Rita Gasparello",
   honorificPrefix: "Dra.",
   jobTitle: "Cirurgiã-Dentista",
+  description: "Cirurgiã-Dentista em Campo Mourão, PR. CRO/PR 40.050. Especialista em odontologia preventiva, clareamento dental e restaurações.",
+  image: absoluteUrl("/images/hero-new.webp"),
+  alumniOf: {
+    "@type": "CollegeOrUniversity",
+    name: "Centro Universitário Integrado de Campo Mourão",
+  },
   hasCredential: {
     "@type": "EducationalOccupationalCredential",
     credentialCategory: "license",
@@ -70,6 +78,7 @@ export const dentistPersonSchema = {
 export const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
+  "@id": `${siteUrl}/#website`,
   name: siteName,
   url: siteUrl,
   inLanguage: "pt-BR",
